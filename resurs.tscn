@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d4j3421hqcnoh"]
+
+[ext_resource type="Script" uid="uid://cudwulnp2d6xx" path="res://Resurs.cs" id="1_wgvsq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_grxxs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qockr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wgvsq"]
+radius = 0.7
+
+[node name="Resurs" type="RigidBody3D" unique_id=1611581392 node_paths=PackedStringArray("Collect")]
+script = ExtResource("1_wgvsq")
+Collect = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1293365518]
+mesh = SubResource("SphereMesh_grxxs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1896444467]
+shape = SubResource("SphereShape3D_qockr")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=723511003]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1450064076]
+shape = SubResource("SphereShape3D_wgvsq")
+
+[connection signal="body_entered" from="Area3D" to="." method="Entered"]
+[connection signal="body_exited" from="Area3D" to="." method="Exited"]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ckunvs24tj1ut"]
+
+[ext_resource type="Script" uid="uid://ce810hbbsklgn" path="res://ResourceGenerator.cs" id="1_dew82"]
+[ext_resource type="PackedScene" uid="uid://d4j3421hqcnoh" path="res://resurs.tscn" id="2_p62gl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dew82"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p62gl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26b78"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="Resource-Generator" type="RigidBody3D" unique_id=2034781464 node_paths=PackedStringArray("colloction_zone")]
+script = ExtResource("1_dew82")
+resurs = ExtResource("2_p62gl")
+colloction_zone = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=477770586]
+mesh = SubResource("BoxMesh_dew82")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=408219037]
+shape = SubResource("BoxShape3D_p62gl")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1625878183]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1498554234]
+shape = SubResource("BoxShape3D_26b78")
+
+[connection signal="body_entered" from="Area3D" to="." method="entered"]
+[connection signal="body_exited" from="Area3D" to="." method="exited"]

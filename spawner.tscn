@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://by50wocd8msy7"]
+
+[ext_resource type="Script" uid="uid://dmy2oiacckuq7" path="res://Spawner.cs" id="1_ttk4a"]
+[ext_resource type="PackedScene" uid="uid://d4j3421hqcnoh" path="res://resurs.tscn" id="2_mcln3"]
+
+[node name="Spawner" type="Node3D" unique_id=243116637]
+script = ExtResource("1_ttk4a")
+resurs = ExtResource("2_mcln3")

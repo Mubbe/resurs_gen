@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="PackedScene" uid="uid://by50wocd8msy7" path="res://spawner.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ckunvs24tj1ut" path="res://resource_generator.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://ce810hbbsklgn" path="res://ResourceGenerator.cs" id="4_lquwl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_h2yge"]
+
+[node name="main" type="Node3D" unique_id=671963753]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1125821496]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1622536811]
+mesh = SubResource("PlaneMesh_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1156518363]
+shape = SubResource("WorldBoundaryShape3D_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1776798536]
+transform = Transform3D(1, 0, 0, 0, 0.9907384, 0.13578475, 0, -0.13578475, 0.9907384, 0, 1.9390284, 5.60735)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2098556796]
+transform = Transform3D(1, 0, 0, 0, -0.100726366, 0.9949142, 0, -0.9949142, -0.100726366, 0, 5.431406, 0)
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=1395994071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20098603, 1.1304352, -4.525773)
+
+[node name="Spawner" parent="SpawnPoint" unique_id=243116637 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9581583, -0.8258777, 0.81935424)
+
+[node name="Player" parent="." unique_id=1489514582 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.20891, 0)
+
+[node name="Resource-Generator" parent="." unique_id=2034781464 node_paths=PackedStringArray("player") instance=ExtResource("3_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7081218, -1.6877689)
+script = ExtResource("4_lquwl")
+player = NodePath("../Player")

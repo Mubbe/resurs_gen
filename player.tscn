@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://c3xf1v1kr3wqx" path="res://Player.cs" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4flbx"]
+viewport_path = NodePath("amount´_resurs")
+
+[node name="Player" type="CharacterBody3D" unique_id=1489514582 node_paths=PackedStringArray("amount_resurs")]
+script = ExtResource("1_4flbx")
+amount_resurs = NodePath("amount´_resurs/Label")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1585795548]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=312961866]
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="amount´_resurs" type="SubViewport" parent="." unique_id=1917970510]
+size = Vector2i(150, 20)
+
+[node name="Label" type="Label" parent="amount´_resurs" unique_id=292532856]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=129338975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2129552, 0)
+texture = SubResource("ViewportTexture_4flbx")
